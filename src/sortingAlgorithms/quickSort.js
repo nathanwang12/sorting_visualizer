@@ -34,6 +34,7 @@ function doPartition(mainArray, startIdx, endIdx, auxiliaryArray, animations) {
     // revert color of comparison
     animations.push([piv_index, endIdx]);
     animations.push([piv_index, pivot]);
+    
 
     doSwap(mainArray, piv_index, endIdx);
     return piv_index + 1;
