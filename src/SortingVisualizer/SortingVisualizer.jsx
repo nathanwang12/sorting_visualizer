@@ -5,7 +5,7 @@ import './SortingVisualizer.css';
 
 // Constants
 
-const ANIMATION_SPEED_MS = 3;
+const ANIMATION_SPEED_MS = 5;
 const NUMBER_OF_ARRAY_BARS = 120;
 const PRIMARY_COLOR = '#222';
 const SECONDARY_COLOR = 'red';
@@ -36,6 +36,17 @@ export default class SortingVisualizer extends React.Component {
 
     mergeSort() {
         const animations = getMergeSortAnimations(this.state.array);
+        this.processAnimations(animations);
+    }
+
+    quickSort() {
+        const animations = getQuickSortAnimations(this.state.array);
+        this.processAnimations(animations);
+    }
+
+    processAnimations(animations) {
+        console.log(animations);
+        console.log(this.state.array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 3 !== 2;
@@ -53,13 +64,10 @@ export default class SortingVisualizer extends React.Component {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
+
                 }, i * ANIMATION_SPEED_MS);
             }
         }
-    }
-
-    quickSort() {
-        const animations = getQuickSortAnimations(this.state.array);
     }
 
     render() {
