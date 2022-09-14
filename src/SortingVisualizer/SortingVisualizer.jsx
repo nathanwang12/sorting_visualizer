@@ -1,6 +1,8 @@
 import React from 'react';
 import {getMergeSortAnimations} from '../sortingAlgorithms/mergeSort.js';
-import {getQuickSortAnimations} from '../sortingAlgorithms/quickSort.js'
+import {getQuickSortAnimations} from '../sortingAlgorithms/quickSort.js';
+import {getHeapSortAnimations} from '../sortingAlgorithms/heapSort.js';
+import {getBubbleSortAnimations} from '../sortingAlgorithms/bubbleSort';
 import './SortingVisualizer.css';
 
 // Constants
@@ -44,9 +46,17 @@ export default class SortingVisualizer extends React.Component {
         this.processAnimations(animations);
     }
 
+    heapSort() {
+        const animations = getHeapSortAnimations(this.state.array);
+        this.processAnimations(animations);
+    }
+
+    bubbleSort() {
+        const animations = getBubbleSortAnimations(this.state.array);
+        this.processAnimations(animations);
+    }
+
     processAnimations(animations) {
-        console.log(animations);
-        console.log(this.state.array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 3 !== 2;
