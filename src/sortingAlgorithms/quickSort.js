@@ -33,14 +33,15 @@ function doPartition(mainArray, startIdx, endIdx, animations) {
             swap(mainArray, i, j);
         }
     }
-    animations.push([i + 1, endIdx]);
-    animations.push([i + 1, endIdx]);
-    animations.push([i + 1, mainArray[endIdx]]);
-    animations.push([i + 1, endIdx]);
-    animations.push([i + 1, endIdx]);
-    animations.push([endIdx, mainArray[i + 1]]);
-    swap(mainArray, i + 1, endIdx);
-    return i + 1;
+    i++;
+    animations.push([i, endIdx]);
+    animations.push([i, endIdx]);
+    animations.push([i, mainArray[endIdx]]);
+    animations.push([i, endIdx]);
+    animations.push([i, endIdx]);
+    animations.push([endIdx, mainArray[i]]);
+    swap(mainArray, i, endIdx);
+    return i;
 
 
 
