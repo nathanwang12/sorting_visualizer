@@ -26,15 +26,12 @@ function doPartition(array, startIdx, endIdx, animations) {
         if (array[j] < pivot) {
 
             i++;
-            processAnimations(array, i, j, animations);
-            processAnimations(array, j, i, animations);
-            
+            recordAnimations(array, i, j, animations);          
             swap(array, i, j);
         }
     }
     i++;
-    processAnimations(array, i, endIdx, animations);
-    processAnimations(array, endIdx, i, animations);
+    recordAnimations(array, i, endIdx, animations);
     swap(array, i, endIdx);
     return i;
 }
@@ -45,12 +42,14 @@ function swap(array, i, j) {
     array[j] = temp;
 }
 
-function processAnimations(array, i, j, animations) {
+function recordAnimations(array, i, j, animations) {
     animations.push([i, j]);
     animations.push([i, j]);
     animations.push([i, array[j]]);
+    animations.push([j, i]);
+    animations.push([j, i]);
+    animations.push([j, array[i]]);
 }
-
 
 
 

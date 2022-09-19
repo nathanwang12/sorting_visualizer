@@ -14,8 +14,7 @@ function heapSortHelper(array, animations) {
     }
 
     for (let i = n - 1; i > 0; i--) {
-        processAnimations(array, 0, i, animations);
-        processAnimations(array, i, 0, animations);
+        recordAnimations(array, 0, i, animations);
         swap(array, 0, i);
         heapify(array, i, 0, animations);
     }
@@ -37,8 +36,7 @@ function heapify(array, N, i, animations) {
 
     if (root != i) {
 
-        processAnimations(array, i, root, animations);
-        processAnimations(array, root, i, animations);
+        recordAnimations(array, i, root, animations);
         swap(array, i, root);
         heapify(array, N, root, animations);
         
@@ -51,8 +49,11 @@ function swap(array, i, j) {
     array[j] = temp;
 }
 
-function processAnimations(array, i, j, animations) {
+function recordAnimations(array, i, j, animations) {
     animations.push([i, j]);
     animations.push([i, j]);
     animations.push([i, array[j]]);
+    animations.push([j, i]);
+    animations.push([j, i]);
+    animations.push([j, array[i]]);
 }

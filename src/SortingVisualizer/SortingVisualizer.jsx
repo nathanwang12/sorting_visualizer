@@ -74,10 +74,9 @@ export default class SortingVisualizer extends React.Component {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
-
                 }, i * ANIMATION_SPEED_MS);
             }
-        }
+        }        
     }
 
     render() {
@@ -89,6 +88,7 @@ export default class SortingVisualizer extends React.Component {
                     <h1>Sorting Algorithm Visualizer</h1>
                 </div>
                 <div className="array-container">
+
                     {array.map((value, idx) => (
                         <div className="array-bar" key={idx}
                         style={{height: `${value}px`}}
@@ -97,7 +97,7 @@ export default class SortingVisualizer extends React.Component {
                     ))} 
                 </div>
                 <div className="button-container">
-                    <button className="visualizer-function" onClick={() => this.resetArray()}>Generate New Array</button>
+                    <button className="visualizer-function" onClick={() => this.resetArray()}>GENERATE NEW ARRAY</button>
                     <button className="visualizer-function" onClick={() => this.mergeSort()}>Merge Sort</button>
                     <button className="visualizer-function" onClick={() => this.quickSort()}>Quick Sort</button>
                     <button className="visualizer-function" onClick={() => this.heapSort()}>Heap Sort</button>
