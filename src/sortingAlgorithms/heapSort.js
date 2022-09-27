@@ -34,7 +34,7 @@ function heapify(array, N, i, animations) {
         root = r;
     }
 
-    if (root != i) {
+    if (root !== i) {
 
         recordAnimations(array, i, root, animations);
         swap(array, i, root);
